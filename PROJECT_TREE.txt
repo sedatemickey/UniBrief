@@ -1,0 +1,83 @@
+campus-message-intelligence/
+├─ AGENTS.md
+├─ PROJECT_PROMPT.md
+├─ README.md
+├─ .env.example
+├─ docker-compose.yml
+│
+├─ backend/
+│  ├─ pyproject.toml 或 requirements.txt
+│  ├─ alembic.ini
+│  ├─ alembic/
+│  │  └─ versions/
+│  ├─ app/
+│  │  ├─ main.py
+│  │  ├─ api/
+│  │  │  └─ v1/
+│  │  ├─ core/
+│  │  │  ├─ config.py
+│  │  │  ├─ logging.py
+│  │  │  └─ enums.py
+│  │  ├─ db/
+│  │  │  ├─ base.py
+│  │  │  └─ session.py
+│  │  ├─ models/
+│  │  ├─ schemas/
+│  │  ├─ repositories/
+│  │  ├─ services/
+│  │  ├─ ai/
+│  │  │  ├─ base.py
+│  │  │  ├─ openai_compatible.py
+│  │  │  └─ result_parser.py
+│  │  └─ adapters/
+│  │     ├─ base.py
+│  │     ├─ json_adapter.py
+│  │     └─ csv_adapter.py
+│  └─ tests/
+│
+├─ frontend/
+│  ├─ package.json
+│  ├─ vite.config.ts
+│  └─ src/
+│     ├─ api/
+│     ├─ components/
+│     ├─ features/
+│     ├─ pages/
+│     ├─ hooks/
+│     ├─ types/
+│     ├─ utils/
+│     ├─ App.tsx
+│     └─ main.tsx
+│
+├─ infra/
+│  └─ mysql/
+│     └─ init/
+│
+├─ sample_data/
+│  ├─ demo_messages.json
+│  └─ README.md
+│
+├─ scripts/
+│  ├─ reset_demo.*
+│  ├─ seed_demo.*
+│  └─ verify_demo.*
+│
+├─ docs/
+│  ├─ ARCHITECTURE.md
+│  ├─ COURSE_REQUIREMENTS.md
+│  ├─ DATABASE.md
+│  ├─ AI_INTEGRATION.md
+│  ├─ API.md
+│  ├─ ROADMAP.md
+│  ├─ ACCEPTANCE.md
+│  ├─ PROGRESS.md
+│  └─ DECISIONS.md
+│
+└─ prompts/
+   ├─ 01_phase0_bootstrap.md
+   ├─ 02_phase1_database.md
+   ├─ 03_phase2_ai.md
+   ├─ 04_phase3_statistics.md
+   ├─ 05_phase4_frontend.md
+   ├─ 06_phase5_demo_quality.md
+   └─ 07_phase6_finish.md
