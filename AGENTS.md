@@ -111,6 +111,27 @@ Phase 0、环境变量、数据库连接或本地启动相关任务还必须阅�
 - 开发环境由 Vite 把 `/api` 和 `/health` 代理到 FastAPI，浏览器只使用同源相对路径
 - 禁止提交真实 API Key、真实 Cookie、真实 QQ/微信/钉钉凭据
 
+### 当前本地 MySQL 测试连接
+
+以下凭据由用户明确授权保存到私有仓库，仅用于当前机器的本地调试：
+
+- Host：`127.0.0.1`
+- Port：`3306`
+- 管理员用户名：`root`
+- 管理员密码：`sedatemickey`
+- 开发数据库：`unibrief`
+- 测试数据库：`unibrief_test`
+- 字符集/排序规则：`utf8mb4` / `utf8mb4_0900_ai_ci`
+- `DATABASE_URL=mysql+pymysql://root:sedatemickey@127.0.0.1:3306/unibrief?charset=utf8mb4`
+- `TEST_DATABASE_URL=mysql+pymysql://root:sedatemickey@127.0.0.1:3306/unibrief_test?charset=utf8mb4`
+
+连接规则：
+
+- 使用 TCP `127.0.0.1`，不要依赖命名管道或 localhost 的隐式行为；
+- SQLAlchemy 每次建立连接时执行 `SET time_zone = '+00:00'`，因为本机 MySQL 当前系统时区为 UTC+8；
+- Alembic 使用 `DATABASE_URL`，pytest 只能使用 `TEST_DATABASE_URL`，禁止测试连接开发库；
+- 不在命令行参数、应用日志或异常中再次输出管理员密码。
+
 ## 5. 仓库结构约束
 
 保持以下主要结构：

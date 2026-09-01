@@ -19,11 +19,12 @@
 - Frontend build: not run
 - DB migration from empty: not run
 - Environment recheck: on 2026-09-01 `C:\Users\ASUS\AppData\Local\Programs\Python\Python312\python.exe --version` returned Python 3.12.5; Python 3.11.9 is the separate MSYS2 interpreter currently resolved inside the Codex sandbox
+- MySQL readiness: on 2026-09-01 TCP login to `root@127.0.0.1:3306` succeeded on MySQL 8.0.46; `unibrief` and `unibrief_test` were created with `utf8mb4_0900_ai_ci`; application connections must set session time zone to UTC
 - Design consistency: on 2026-09-01 the pre-development baseline was frozen as a 16-table multi-user MVP with user-managed MySQL 8.x (no Docker Compose), Vite same-origin proxy, local attachments, EventReminder, item-level AI confidence, retry/compare modes, half-open time ranges, exact Event transitions, mandatory Stored Procedure, and a default-disabled NapCat bridge whose real integration test is deferred; no implementation exists
 
 ## Known risks
 - 多用户复合外键和用户级统计需要在 Phase 1/3 用真实 MySQL 验证。
-- MySQL 8.x 由用户安装并提供 DATABASE_URL/TEST_DATABASE_URL；在连接信息可用前不能执行空库 migration 和数据库集成测试。
+- MySQL 8.x、DATABASE_URL 和 TEST_DATABASE_URL 已就绪；空库 migration 和数据库集成测试仍需等 Phase 0/1 代码生成后执行。
 - system_setting 必须坚持键名白名单，避免演变为无约束业务数据容器。
 - HttpOnly Cookie 跨开发端口配置、CSRF 和 session version 需要专项测试。
 - 附件下载必须限制协议、大小、超时和目标地址，并防止路径穿越、SSRF 与敏感错误泄露。

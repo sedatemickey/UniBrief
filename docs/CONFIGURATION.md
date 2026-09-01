@@ -1,6 +1,6 @@
 # 本地开发与环境变量契约
 
-本文冻结 Phase 0 的运行环境和 `.env.example` 字段。实际 `.env` 不提交 Git；密码、API Key、Cookie、NapCat Token 不得写入文档、日志或示例数据。
+本文冻结 Phase 0 的运行环境和 `.env.example` 字段。实际 `.env` 不提交 Git；除用户明确授权写入 `AGENTS.md` 的当前本地 MySQL 测试凭据外，密码、API Key、Cookie、NapCat Token 不得写入文档、日志或示例数据。
 
 ## 1. 已确认的本机解释器
 
@@ -21,6 +21,7 @@ backend\.venv\Scripts\python.exe --version
 - MySQL 的安装、启动、端口、应用账号以及开发/测试数据库创建由用户全权负责；项目不创建 Docker Compose，也不管理 MySQL 服务生命周期。
 - 后端只从 `DATABASE_URL` / `TEST_DATABASE_URL` 连接，Alembic 和 pytest 不得写死主机、端口或密码。
 - 开发库和测试库必须分离，建议使用 `unibrief` 与 `unibrief_test`；测试不得连接生产/演示库。
+- 当前机器实际连接信息以 `AGENTS.md` 的“当前本地 MySQL 测试连接”为准；本文件的 DSN 仍保留为可移植的 `.env.example` 占位值。
 
 手工安装 MySQL 后，Phase 0 至少验证：服务已启动、应用账号可连接、两个数据库存在、`SELECT VERSION()` 为 8.x、字符集为 `utf8mb4`、会话时区为 `+00:00`。
 
