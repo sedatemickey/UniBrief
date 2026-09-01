@@ -3,7 +3,7 @@
 > Codex 每完成一个 Phase 后更新这里。不要删除历史记录。
 
 ## Current Phase
-- Phase 6 - 收尾（进行中）：文档、schema/统计 SQL 导出与本机最终测试已完成；仍需 clean clone 实测，以及依赖外部配置的真实 AI/NapCat 联调。
+- Phase 6 - 收尾（实现完成、外部验收待办）：文档、schema/SQL 导出、本机与 clean clone 安装/迁移/启动/测试均已完成；仍缺真实 AI Key/model、NapCat 第三方框架和最终课堂演示记录。
 - Phase 2 代码与自动化测试已完成；当前 `.env` 没有 `AI_API_KEY`/`AI_DEFAULT_MODEL`，真实供应商联调按文档明确保持未完成，不伪造通过。
 
 ## Checklist
@@ -78,6 +78,8 @@
 - 更新 `pre/README.md`、当前答辩材料和 Event 状态图说明，明确早期单用户文档已废止、第一次展示稿是历史口径，最终演示使用当前 16 表/附件/提醒实现。
 - 更新 `PROJECT_TREE.txt`，与当前仓库结构一致。
 - 本地浏览器 smoke test 覆盖普通登录、Dashboard、Information 列表/详情、Message/附件、Sources、Import、AI Settings、Statistics、Calendar/议程和 Reminder；修复 Dashboard 因每次 render 生成新时间范围导致的重复请求循环，补齐 Information 详情的 Category/Tag/Reminder 展示，并清理 Ant Design 6 已废止属性警告。
+- 从提交 `89f224f` 建立独立 clean clone：全新 Python 3.12 venv `pip install '.[dev]'`、`npm ci`、空测试库 downgrade/upgrade、pytest、ruff、alembic check、frontend build/test、FastAPI 8010 `/health` 与 Vite 5174 页面均通过。
+- clean clone 在日期边界复测发现 upcoming-events 测试写死 2026-09-02；已改为按 Asia/Shanghai“明天”动态生成并重新通过 44 项测试。
 ## Latest validation
 - Backend tests: on 2026-09-01 `backend/.venv/Scripts/python.exe -m pytest -q` passed, **44 tests passed**；覆盖认证、导入/附件、AI Provider/结构化分析、统计高级对象、周期任务、Information 组合筛选、乐观锁、Event/Reminder 生命周期与跨用户隔离。
 - Backend lint: on 2026-09-01 `backend/.venv/Scripts/python.exe -m ruff check .` passed.
@@ -96,6 +98,6 @@
 
 ## Known risks / next phase
 - Phase 2 唯一未完成的验收是使用用户提供的真实 AI Key/model 成功连接并分析至少一条消息；当前配置缺失，不能伪造通过。
-- Phase 6 本机文档、schema/SQL 导出、空库迁移、seed、pytest、ruff、alembic check、frontend build/test 已完成；仍需在独立目录执行 clean clone 安装与启动记录。
-- NapCat 真实框架联调仍按文档延后；演示数据、更多健壮性矩阵和报告材料按 Phase 5-6 推进。
+- Phase 6 本机与 clean clone 的文档、schema/SQL、依赖安装、空库迁移、seed、pytest、ruff、alembic check、frontend build/test 和实际启动均已完成。
+- NapCat 真实框架联调仍依赖用户搭建第三方框架；最终业务演示清单需由用户按 `docs/DEMO_SCRIPT.md` 完成或录屏。
 - FastAPI 当前依赖组合会输出上游 TestClient 弃用 warning，但测试结果有效；后续依赖升级时复核。

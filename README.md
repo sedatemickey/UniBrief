@@ -193,4 +193,4 @@ backend\.venv\Scripts\python.exe scripts\check_database.py
 
 ## 当前状态与外部阻塞
 
-Phase 0–5 已实现，当前执行 Phase 6 最终文档和验证。真实 AI 成功联调依赖用户提供合法 Key/model；NapCat 真实联调依赖用户完成第三方框架搭建。未满足外部条件时，项目会展示真实失败分类和重试机制，而不会伪造成功。
+Phase 0–5 与 Phase 6 的代码、文档、本机测试和独立 clean clone 安装/启动验证均已完成。剩余验收依赖用户提供合法 AI Key/model、完成 NapCat 第三方框架搭建，并按演示脚本完成最终课堂走查。未满足外部条件时，项目会展示真实失败分类和重试机制，而不会伪造成功。

@@ -128,3 +128,14 @@
 - Demo seed（在专用测试库验证）：1006 Messages、34 InformationItems、238 MessageInformation、24 Events、24 EventReminders、24 Attachments。
 - Phase 6 静态校验：12 个收尾文件、43 个环境变量、16 张核心表、6 个数据库高级对象全部通过。
 - 业务演示项保持未勾选，表示尚未按 `docs/DEMO_SCRIPT.md` 完整录屏/课堂走查；真实 AI 与 NapCat 项不得用 seed 或 mock 替代。
+
+## 2026-09-01 clean clone 验证记录
+
+- Git：从提交 `89f224f` 新建独立 clone，工作区干净。
+- Backend 首次安装：新建 Python 3.12 venv 并执行 `pip install '.[dev]'` 成功。
+- Frontend 首次安装：`npm ci` 成功，177 packages，0 vulnerabilities。
+- 数据库：在专用 `unibrief_test` 执行 `alembic downgrade base -> upgrade head -> check` 成功。
+- Clean clone backend：44 tests passed、ruff passed、Alembic 无漂移。
+- Clean clone frontend：build passed、2 tests passed；仅有非阻塞的大 chunk warning。
+- 实际启动：FastAPI `127.0.0.1:8010/health` 返回 `status=ok`，Vite `127.0.0.1:5174` 返回 HTTP 200；测试后已停止进程。
+- 日期稳健性：日期边界复测暴露并修复 upcoming-events 测试的固定日期假设，改为按 Asia/Shanghai 动态构造“明天”。

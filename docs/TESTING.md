@@ -92,3 +92,7 @@ backend\.venv\Scripts\python.exe scripts\test_ai_connection.py
 9. reset/seed 后执行 `docs/DEMO_SCRIPT.md`。
 
 只有在新目录实际完成以上步骤后，才能勾选“clean clone 后按 README 可启动”。
+
+## 9. 2026-09-01 clean clone 实测结果
+
+已从 Git 提交 `89f224f` 新建独立 clone，并按本文件执行：全新 Python 3.12 venv 安装、`npm ci`、专用测试库空库迁移、44 项 pytest、ruff、Alembic check、frontend build/test，以及 FastAPI/Vite 实际启动。全部通过；真实 AI 与 NapCat 仍属于外部配置验收，不包含在 clean clone 的离线成功结论中。
