@@ -5,9 +5,10 @@ from __future__ import annotations
 import asyncio
 import json
 from collections import deque
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, time, timedelta
 from decimal import Decimal
 from typing import Any
+from zoneinfo import ZoneInfo
 
 from fastapi.testclient import TestClient
 from sqlalchemy import select, text
@@ -221,10 +222,15 @@ def test_statistics_use_procedure_views_trigger_half_open_ranges_and_isolation()
                 ),
             ]
         )
+        shanghai = ZoneInfo("Asia/Shanghai")
+        tomorrow = datetime.now(shanghai).date() + timedelta(days=1)
+        event_start = datetime.combine(
+            tomorrow, time(9, 0), tzinfo=shanghai
+        ).astimezone(UTC)
         event = Event(
             information_id=active.id,
-            start_at=datetime(2026, 9, 2, 1, 0),
-            deadline=datetime(2026, 9, 2, 10, 0),
+            start_at=event_start.replace(tzinfo=None),
+            deadline=(event_start + timedelta(hours=9)).replace(tzinfo=None),
             event_status="UPCOMING",
         )
         db.add(event)
@@ -277,7 +283,7 @@ def test_statistics_use_procedure_views_trigger_half_open_ranges_and_isolation()
     upcoming = client.get("/api/v1/statistics/upcoming-events?days=7")
     assert upcoming.status_code == 200
     assert upcoming.json()["total"] == 1
-    assert upcoming.json()["by_date"][1] == {"date": "2026-09-02", "count": 1}
+    assert upcoming.json()["by_date"][1] == {"date": tomorrow.isoformat(), "count": 1}
 
     with SessionLocal() as db:
         objects = db.execute(
@@ -485,3 +491,4 @@ def test_auto_analysis_uses_same_user_channel_threshold_and_atomic_claim(
         assert len(
             list(db.scalars(select(AIAnalysis).where(AIAnalysis.message_id.in_(ids))))
         ) == 2
+
