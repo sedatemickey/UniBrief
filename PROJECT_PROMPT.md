@@ -6,13 +6,16 @@
 - `AGENTS.md`
 - `docs/COURSE_REQUIREMENTS.md`
 - `docs/ARCHITECTURE.md`
-- `docs/AI_INTEGRATION.md`
 - `docs/DATABASE.md`
+- `docs/AI_INTEGRATION.md`
 - `docs/ROADMAP.md`
 - `docs/ACCEPTANCE.md`
 - `docs/API.md`
 - `docs/PROGRESS.md`
 - `docs/DECISIONS.md`
+- `docs/CONFIGURATION.md`
+
+不创建 Docker Compose；MySQL 8.x 的安装、启动、账号和数据库创建由用户负责，项目只通过环境变量连接和验证。
 
 ## 任务
 
@@ -49,7 +52,9 @@
 
 ## 硬性边界
 
-- 单用户：不要创建 User/UserFeedback/认证系统；
+- 多用户私有数据空间：必须实现 User、普通用户认证、独立管理员认证和严格的用户数据隔离；
+- 管理员只管理账号、注册开关、Platform 和 Category，不得查看用户 Message、InformationItem、Tag、Event 或附件内容；
+- 按 `docs/DATABASE.md` 实现 16 张核心表，不创建 UserFeedback；
 - 不逆向 QQ/微信/钉钉；
 - 不加入 Redis/Kafka/Celery/微服务，除非我以后明确要求；
 - 不加入向量数据库/RAG；
@@ -61,6 +66,8 @@
 - 不提交任何真实密钥或真实聊天数据；
 - 不绕开数据库约束去“在代码里假装有约束”；
 - 不擅自删除 Category、Tag、MessageInformation、Event 等核心设计。
+- 必须实现 `sp_channel_statistics(p_user_id, p_start, p_end)` Stored Procedure。
+- 可通过独立的 NapCat OneBot 11 Adapter 接入 QQ 消息，但不得在本项目内逆向 QQ 协议、发送消息或自动回复。
 
 ## 最终目标
 

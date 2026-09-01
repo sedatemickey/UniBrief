@@ -21,4 +21,5 @@
 
 补重复导入、AI错误处理、事务回滚、过滤、统计测试。
 自动化测试可以 mock HTTP，但最终 demo 操作说明必须使用真实 OpenAI-compatible API。
+只有在用户明确表示 NapCat 框架已经搭建完成后，才运行 docs/NAPCAT_INTEGRATION.md 规定的合成事件测试和真实手工联调；否则保留为明确的待验收项，不伪造通过。
 更新 PROGRESS.md。

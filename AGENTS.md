@@ -11,7 +11,7 @@
 - 对具有时间属性的信息生成事项 Event；
 - 用户可以在 Web 界面中浏览、搜索、筛选、查看来源、查看统计。
 
-本课程设计按“单用户系统”实现，不做账号体系，不做 User/UserFeedback 表。
+本课程设计按“多用户、私有数据空间”实现。普通用户拥有独立的消息、信息、标签和事项数据；管理员通过独立管理入口维护账号及全局字典，不得查看用户私有内容。不做 UserFeedback 表。
 
 ## 2. 强制阅读顺序
 
@@ -24,12 +24,20 @@
 6. `docs/ACCEPTANCE.md`
 7. `docs/PROGRESS.md`
 
+Phase 0、环境变量、数据库连接或本地启动相关任务还必须阅读 `docs/CONFIGURATION.md`。
+
 涉及数据库结构修改时，必须重新阅读 `docs/DATABASE.md`。
 涉及前后端接口修改时，必须检查 `docs/API.md`；若接口发生变化，同步更新该文件。
+涉及 NapCat/QQ Adapter 时，必须阅读 `docs/NAPCAT_INTEGRATION.md`，且不得把 QQ 凭据、Cookie、Access Token 或真实聊天数据提交到仓库。
 
 ## 3. MVP 范围
 
 必须实现：
+- 普通用户 User、用户名密码登录、退出和修改密码；
+- 管理员创建/启停用户、重置用户密码；
+- `system_setting` 保存受控的系统级设置，包括注册开关和管理员密码哈希；
+- 注册接口受 `registration_enabled` 控制，默认关闭；
+- HttpOnly Cookie 会话、CSRF 防护和严格的用户数据隔离；
 - 消息平台 Platform 管理；
 - 消息渠道 Channel 管理；
 - 发送者 Sender 管理；
@@ -41,7 +49,7 @@
 - Category 分类及其关联；
 - Tag 标签及其关联；
 - Event 事项；
-- JSON/CSV 或模拟 Adapter 导入消息；
+- JSON/CSV、模拟 Adapter，以及 NapCat OneBot 11 Adapter 导入方法；NapCat 运行时默认关闭，真实框架联调按阶段延后；
 - AI Provider 抽象；
 - 真实可用的 OpenAI-compatible AI Provider；
 - 模型列表、模型选择与真实连接测试接口；
@@ -50,9 +58,9 @@
 - MySQL 数据库迁移、索引、约束、测试和演示数据。
 
 明确不做：
-- 用户注册、登录、权限系统；
-- User / UserFeedback；
-- 真正逆向 QQ、微信、钉钉协议；
+- 多级角色/RBAC、团队空间和用户间数据共享；
+- UserFeedback；
+- 在本项目内逆向 QQ、微信、钉钉协议（NapCat 作为独立第三方协议端，仅通过 OneBot 11 Adapter 接入）；
 - 自动回复；
 - 多 Agent；
 - RAG / 向量数据库；
@@ -98,8 +106,9 @@
 - 自动化单元测试允许 mock HTTP transport，但产品/演示流程必须走真实 API
 
 ### Infrastructure
-- Docker Compose 至少提供 MySQL
+- MySQL 8.x 的安装、启动、账号和数据库创建由用户负责；项目只通过环境变量连接，不提供 Docker Compose
 - `.env.example` 记录所有配置项
+- 开发环境由 Vite 把 `/api` 和 `/health` 代理到 FastAPI，浏览器只使用同源相对路径
 - 禁止提交真实 API Key、真实 Cookie、真实 QQ/微信/钉钉凭据
 
 ## 5. 仓库结构约束
@@ -138,7 +147,9 @@ Backend 采用分层：
 - 外键必须真实创建，不只在代码里逻辑关联；
 - 多对多必须通过关联表实现；
 - `event.information_id` 必须同时为 FK + UNIQUE，保证 InformationItem 1 : 0..1 Event；
-- `tag.name`、`category.name` 应 UNIQUE；
+- `category.name` 应全局 UNIQUE，`tag(user_id, name)` 应在用户内 UNIQUE；
+- 用户私有表必须有明确归属，跨用户 Message/InformationItem/Tag 关联必须由数据库约束阻止；
+- `system_setting` 只允许代码中登记的键名和类型，禁止用它代替业务实体或关系；
 - 平台外部 ID 应设计合理唯一约束，防止重复导入；
 - 原始消息需要防重复导入；
 - 所有枚举/状态字段在代码中集中定义；
@@ -146,16 +157,16 @@ Backend 采用分层：
 - 不把多个 tag 直接塞进逗号字符串。
 
 至少实现并解释以下索引：
-- `message(channel_id, sent_at)`
-- `message(sender_id, sent_at)`
-- `information_item(status, importance, created_at)`
+- `message(user_id, channel_id, sent_at)`
+- `message(user_id, sender_id, sent_at)`
+- `information_item(user_id, status, importance, created_at)`
 - `event(deadline)`
 - 适合导入去重的唯一索引
 
 至少实现：
 - 3 个数据库视图或等价统计查询；
 - 1 个合理的 Trigger 或数据库级自动维护机制；
-- 1 个 Stored Procedure（如果实现成本可控；若省略，必须在 `docs/DECISIONS.md` 说明原因）。
+- 1 个 Stored Procedure：`sp_channel_statistics(p_user_id, p_start, p_end)`，必须通过 Alembic migration 创建。
 
 ## 7. AI 处理约束
 
@@ -203,12 +214,11 @@ AI 失败时：
 
 课程设计阶段不要实现复杂向量检索。
 
-MVP 策略：
+MVP 策略（所有候选和关联必须限定在当前用户范围内）：
 1. 先从最近 ACTIVE 的 InformationItem 中取有限候选；
 2. 通过标题关键词/简单相似规则形成候选集；
 3. 让 AI 在候选中决定 `create / link / update`；
-4. MockAIProvider 使用确定性规则完成同样逻辑；
-5. 所有 Message -> InformationItem 关系写入 `message_information`。
+4. 所有 Message -> InformationItem 关系写入 `message_information`。
 
 必须支持：
 - 多条 Message 支持同一个 InformationItem；

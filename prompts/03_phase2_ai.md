@@ -4,6 +4,7 @@
 - docs/AI_INTEGRATION.md
 - docs/DATABASE.md
 - docs/ARCHITECTURE.md
+- docs/API.md
 - docs/PROGRESS.md
 
 只完成 ROADMAP Phase 2。
@@ -30,6 +31,7 @@
    - POST /api/v1/ai/test
    - POST /messages/{id}/analyze 支持 model
    - POST /messages/analyze-batch 支持 model
+   - 单条/批量请求支持 mode=retry|compare；retry 写业务结果，compare 只追加 AIAnalysis 且不改 Message/Information/Event/Reminder
 
 4. /models 不受兼容供应商支持时：
    - 不得让系统不可用
@@ -37,30 +39,41 @@
    - 后续前端必须允许手工 model ID
 
 5. 完成：
-Message -> AIAnalysis -> InformationItem -> MessageInformation -> Category/Tag -> Event
+Message -> AIAnalysis -> InformationItem -> MessageInformation -> Category/Tag -> Event -> EventReminder
 的事务化业务流程。
 
 6. 必须覆盖：
    - useful=false 不生成 InformationItem
-   - create/link/update
+   - create/link/update/correct
    - relation_type CREATE/SUPPORT/UPDATE/CORRECTION
    - Category/Tag 查找或创建
    - deadline/start_at -> Event
-   - 401
-   - model not found
+   - 带 Deadline 的 Event 与默认提前 24 小时的 EventReminder 原子创建
+   - Deadline 修改后按文档重算默认提醒，不覆盖自定义或 DISABLED 提醒
+   - `action`、`target_information_id`、`relation_type` 下沉到每个 item
+   - 顶层只保留 useful；importance/confidence 下沉到每个 item
+   - 严格执行 create/null/CREATE、link/target/SUPPORT、update/target/UPDATE、correct/target/CORRECTION 组合表
+   - 批量响应使用 results[]，按 Message 独立短事务，允许部分成功
+   - AIAnalysis 同时持久化 SUCCEEDED/FAILED、错误码、脱敏错误、耗时和原始响应文本
+   - InformationItem 使用 version 乐观锁；冲突时按文档有限重试或标记失败
+   - UniBrief 会话失败 401
+   - Provider AUTH_ERROR 502
+   - model not found 502
    - 429
-   - timeout
-   - network error
-   - invalid JSON
-   - schema invalid
+   - timeout -> 504
+   - network error -> 502
+   - invalid JSON -> 502
+   - schema invalid -> 502
    - 失败后 Message 可重试
 
-7. 提供 scripts/test_ai_connection.py：
+7. 本阶段先保证手工单条和手工批量分析稳定。20 条/5 分钟自动窗口及 PROCESSING 崩溃恢复在 Phase 3 实现，不得在 Phase 2 用不可靠的内存队列伪装完成。
+
+8. 提供 scripts/test_ai_connection.py：
    - 使用当前 .env 做真实 API 联调
    - 输出 base URL、model、latency、成功/失败
    - 永远不打印 API Key
 
-8. 自动化 pytest 不应消耗真实 Token：
+9. 自动化 pytest 不应消耗真实 Token：
    - 可以 mock HTTP transport / SDK 方法
    - 但不允许实现可被应用运行时选择的 MockAIProvider
 
