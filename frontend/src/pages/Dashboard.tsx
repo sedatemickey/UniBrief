@@ -13,7 +13,7 @@ function range(): { start: string; end: string } {
 
 export function DashboardPage() {
   const time = useMemo(range, [])
-  const overview = useQuery({ queryKey: ['statistics', 'overview', time], queryFn: () => statisticsApi.overview(time) })
+  const overview = useQuery({ queryKey: ['statistics', 'overview'], queryFn: () => statisticsApi.overview() })
   const channels = useQuery({ queryKey: ['statistics', 'channels', time], queryFn: () => statisticsApi.channels(time) })
   const categories = useQuery({ queryKey: ['statistics', 'categories', time], queryFn: () => statisticsApi.categories({ ...time, include_archived: false }) })
   const upcoming = useQuery({ queryKey: ['statistics', 'upcoming', 14], queryFn: () => statisticsApi.upcoming({ days: 14 }) })
@@ -104,4 +104,3 @@ export function AdminStatusPage() {
     <Row><Col span={12}><Statistic title="注册开关" value={settings.data.registration_enabled ? '开启' : '关闭'} /></Col><Col span={12}><Statistic title="管理员密码" value={settings.data.admin_password_configured ? '已配置' : '未配置'} /></Col></Row>
   )}</QueryState></Card>
 }
-

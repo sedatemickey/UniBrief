@@ -291,3 +291,20 @@
   - 当前答辩、第二次系统演示与报告以 `docs/PROGRESS.md`、`docs/ER_MAPPING.md`、`docs/DEMO_SCRIPT.md` 和 16 表实现为准；
   - 真实 AI、NapCat 与 clean clone 未验证项必须明确保留，不用 seed 或 mock 伪造完成。
 - Reason: 保留课程过程材料的同时，防止旧版阶段状态、13 表或单用户口径混入最终答辩。
+
+## D036 - 课堂手工 AI 演示数据采用追加式独立消息集
+- Status: Accepted
+- Decision:
+  - 新增固定 60 条的合成原始消息集，默认追加到 `demo_student`，不调用 reset、不删除或覆盖现有演示数据；
+  - 通过正式 ingestion service 导入并使用固定 external ID 保证幂等，导入后必须验证全部 Message 为 PENDING；
+  - 52 条有效消息按互不相干的独立主题设计，使 AI 优先执行 create；8 条普通闲聊用于展示 useful=false；
+  - 消息分布在 7 个低于 20 条数量阈值的演示 Channel，覆盖通知、作业、课程考试、活动、行政生活和低可信度小道消息。
+- Reason: 满足课堂“先展示原始消息、再手工批量调用真实 AI 形成实体与关系”的流程，同时避免伪造 AIAnalysis 或预写 InformationItem。
+
+## D037 - Dashboard 状态卡片不复用历史统计时间窗
+- Status: Accepted
+- Decision:
+  - Dashboard 的消息、有效信息、未来事项和到期提醒卡片调用无时间参数的 overview，展示当前用户全局状态总数；
+  - 最近 29 天时间窗只用于渠道有效率与分类分布等趋势图；
+  - `event_upcoming_total` 继续表示 UPCOMING/ONGOING 事项，`reminder_due_total` 继续只表示 DUE 提醒，不把 PENDING 提醒误计为到期。
+- Reason: 历史窗口的 `end=当前时间` 会天然排除未来事项，且状态型 KPI 与历史趋势图不应共享同一时间口径。

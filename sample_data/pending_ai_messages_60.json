@@ -1,0 +1,774 @@
+{
+  "dataset_id": "pending-ai-demo-20260902-v1",
+  "target_username": "demo_student",
+  "expected_total": 60,
+  "expected_useless": 8,
+  "description": "60条完全合成的校园原始消息；52条彼此独立的有用消息和8条无用闲聊，导入后应保持PENDING等待真实AI批量分析。",
+  "batches": [
+    {
+      "purpose": "普通通知",
+      "expected_count": 10,
+      "platform": {
+        "name": "QQ",
+        "type": "IM"
+      },
+      "channel": {
+        "external_id": "ai-demo-20260902-general-notices",
+        "name": "2026校园服务通知群（AI演示）",
+        "channel_type": "GROUP"
+      },
+      "messages": [
+        {
+          "external_id": "ai-demo-20260902-notice-01",
+          "sender": {
+            "external_id": "ai-demo-campus-service",
+            "display_name": "校园服务台",
+            "source_type": "ADMIN"
+          },
+          "content": "图书馆通知：9月5日8:00至12:00，东区二层阅览室进行空调检修，期间暂停开放；需要还书的同学请使用一楼自助还书机。",
+          "sent_at": "2026-09-02T08:05:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-notice-02",
+          "sender": {
+            "external_id": "ai-demo-network-center",
+            "display_name": "校园网运维中心",
+            "source_type": "ADMIN"
+          },
+          "content": "校园网维护：9月6日0:30至2:00升级宿舍区核心交换机，6号、7号宿舍楼网络可能间歇中断，请提前保存在线作业。",
+          "sent_at": "2026-09-02T08:12:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-notice-03",
+          "sender": {
+            "external_id": "ai-demo-card-center",
+            "display_name": "校园卡服务中心",
+            "source_type": "ADMIN"
+          },
+          "content": "9月4日14:00至17:00，校园卡补办业务临时移至综合楼3号楼105室，原服务大厅只办理充值业务。",
+          "sent_at": "2026-09-02T08:19:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-notice-04",
+          "sender": {
+            "external_id": "ai-demo-transport-office",
+            "display_name": "校车调度室",
+            "source_type": "ADMIN"
+          },
+          "content": "自9月7日起，前往新校区的早班校车增加北门7:20停靠点，原东门7:10发车时间不变。",
+          "sent_at": "2026-09-02T08:26:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-notice-05",
+          "sender": {
+            "external_id": "ai-demo-lost-found",
+            "display_name": "失物招领处",
+            "source_type": "ADMIN"
+          },
+          "content": "失物招领处将在9月8日17:00清理暑期无人认领物品，遗失钥匙、耳机或证件的同学请在此之前到保卫处102室核对领取。",
+          "sent_at": "2026-09-02T08:33:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-notice-06",
+          "sender": {
+            "external_id": "ai-demo-lab-office",
+            "display_name": "实验中心办公室",
+            "source_type": "ADMIN"
+          },
+          "content": "本学期首次进入开放实验室的同学须参加安全培训，时间为9月9日18:30，地点实验楼B2-301，现场签到。",
+          "sent_at": "2026-09-02T08:40:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-notice-07",
+          "sender": {
+            "external_id": "ai-demo-property",
+            "display_name": "后勤物业",
+            "source_type": "ADMIN"
+          },
+          "content": "停水提醒：9月5日13:00至16:00对供水管道消毒，6至8号宿舍楼暂停供水，请提前适量储水。",
+          "sent_at": "2026-09-02T08:47:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-notice-08",
+          "sender": {
+            "external_id": "ai-demo-sports-center",
+            "display_name": "体育中心",
+            "source_type": "ADMIN"
+          },
+          "content": "游泳馆因承办校际比赛，将于9月10日19:00提前闭馆，9月12日6:30恢复开放。",
+          "sent_at": "2026-09-02T08:54:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-notice-09",
+          "sender": {
+            "external_id": "ai-demo-print-service",
+            "display_name": "校园打印服务",
+            "source_type": "ADMIN"
+          },
+          "content": "校园云打印平台9月3日22:00至23:00升级，期间无法上传新文件，已提交的打印任务不受影响。",
+          "sent_at": "2026-09-02T09:01:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-notice-10",
+          "sender": {
+            "external_id": "ai-demo-student-affairs",
+            "display_name": "学生事务大厅",
+            "source_type": "ADMIN"
+          },
+          "content": "学籍信息年度确认已开放，请在9月11日17:00前登录学生事务门户核对姓名、证件号和联系方式，发现错误需在线提交更正申请。",
+          "sent_at": "2026-09-02T09:08:00+08:00",
+          "attachments": []
+        }
+      ]
+    },
+    {
+      "purpose": "作业提交窗口",
+      "expected_count": 10,
+      "platform": {
+        "name": "DingTalk",
+        "type": "IM"
+      },
+      "channel": {
+        "external_id": "ai-demo-20260902-assignment-windows",
+        "name": "2026课程作业发布群（AI演示）",
+        "channel_type": "GROUP"
+      },
+      "messages": [
+        {
+          "external_id": "ai-demo-20260902-homework-01",
+          "sender": {
+            "external_id": "ai-demo-db-teacher",
+            "display_name": "数据库课程教师",
+            "source_type": "TEACHER"
+          },
+          "content": "数据库实验四“SQL查询优化”提交窗口已开启，截止9月8日23:00。请在教学平台提交PDF报告和explain结果截图，文件名使用学号_姓名。",
+          "sent_at": "2026-09-02T09:20:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-homework-02",
+          "sender": {
+            "external_id": "ai-demo-os-teacher",
+            "display_name": "操作系统课程教师",
+            "source_type": "TEACHER"
+          },
+          "content": "操作系统进程调度实验报告须在9月10日21:00前提交，压缩包内包含报告PDF、源代码和运行说明，缺少任一项按未完整提交处理。",
+          "sent_at": "2026-09-02T09:27:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-homework-03",
+          "sender": {
+            "external_id": "ai-demo-linear-algebra-teacher",
+            "display_name": "线性代数课程教师",
+            "source_type": "TEACHER"
+          },
+          "content": "线性代数第三次习题提交窗口为9月4日8:00至9月6日22:00，只接收教学平台拍照上传，需保证每页学号清晰。",
+          "sent_at": "2026-09-02T09:34:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-homework-04",
+          "sender": {
+            "external_id": "ai-demo-english-teacher",
+            "display_name": "大学英语课程教师",
+            "source_type": "TEACHER"
+          },
+          "content": "英语口语作业要求录制2分钟校园介绍音频，并在9月12日12:00前上传MP3文件，同时提交英文文字稿。",
+          "sent_at": "2026-09-02T09:41:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-homework-05",
+          "sender": {
+            "external_id": "ai-demo-java-teacher",
+            "display_name": "Java Web课程教师",
+            "source_type": "TEACHER"
+          },
+          "content": "Java Web迷你项目截止9月15日23:59，请提交可访问的Git仓库链接、数据库初始化脚本和一页部署说明。",
+          "sent_at": "2026-09-02T09:48:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-homework-06",
+          "sender": {
+            "external_id": "ai-demo-probability-teacher",
+            "display_name": "概率论课程教师",
+            "source_type": "TEACHER"
+          },
+          "content": "概率论随机数实验的数据分析表请在9月9日20:00前提交Excel文件，至少包含均值、方差和直方图三个结果。",
+          "sent_at": "2026-09-02T09:55:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-homework-07",
+          "sender": {
+            "external_id": "ai-demo-network-teacher",
+            "display_name": "计算机网络课程教师",
+            "source_type": "TEACHER"
+          },
+          "content": "Wireshark抓包实验报告截止9月13日22:00，需要分别分析DNS、TCP握手和HTTP请求，不得提交原始pcap文件代替报告。",
+          "sent_at": "2026-09-02T10:02:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-homework-08",
+          "sender": {
+            "external_id": "ai-demo-se-teacher",
+            "display_name": "软件工程课程教师",
+            "source_type": "TEACHER"
+          },
+          "content": "软件工程小组用例规格说明书请在9月16日18:00前由组长统一提交，正文不少于6个核心用例，并附用例图。",
+          "sent_at": "2026-09-02T10:09:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-homework-09",
+          "sender": {
+            "external_id": "ai-demo-ds-teacher",
+            "display_name": "数据结构课程教师",
+            "source_type": "TEACHER"
+          },
+          "content": "数据结构队列模拟上机作业截止9月7日23:00，提交C++源文件和三组自测输入输出，禁止只交可执行文件。",
+          "sent_at": "2026-09-02T10:16:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-homework-10",
+          "sender": {
+            "external_id": "ai-demo-ethics-teacher",
+            "display_name": "工程伦理课程教师",
+            "source_type": "TEACHER"
+          },
+          "content": "工程伦理案例反思短文提交截止9月18日16:00，字数1200至1500字，需结合课堂讨论案例独立完成。",
+          "sent_at": "2026-09-02T10:23:00+08:00",
+          "attachments": []
+        }
+      ]
+    },
+    {
+      "purpose": "课程调整与考试",
+      "expected_count": 8,
+      "platform": {
+        "name": "WeChat",
+        "type": "IM"
+      },
+      "channel": {
+        "external_id": "ai-demo-20260902-course-exam",
+        "name": "2026课程与考试信息群（AI演示）",
+        "channel_type": "GROUP"
+      },
+      "messages": [
+        {
+          "external_id": "ai-demo-20260902-course-01",
+          "sender": {
+            "external_id": "ai-demo-db-course-teacher",
+            "display_name": "数据库任课教师",
+            "source_type": "TEACHER"
+          },
+          "content": "9月4日数据库系统课程上课地点由教学楼B203调整到A408，上课时间仍为10:10，请互相提醒。",
+          "sent_at": "2026-09-02T10:40:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-course-02",
+          "sender": {
+            "external_id": "ai-demo-co-teacher",
+            "display_name": "计算机组成原理教师",
+            "source_type": "TEACHER"
+          },
+          "content": "计算机组成原理第一次随堂测验安排在9月14日10:10，地点C302，闭卷，范围为第1至第3章。",
+          "sent_at": "2026-09-02T10:48:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-course-03",
+          "sender": {
+            "external_id": "ai-demo-os-course-teacher",
+            "display_name": "操作系统任课教师",
+            "source_type": "TEACHER"
+          },
+          "content": "原定9月8日下午的操作系统课顺延至9月9日19:00线上进行，会议号将在当天课程群置顶发布。",
+          "sent_at": "2026-09-02T10:56:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-course-04",
+          "sender": {
+            "external_id": "ai-demo-calculus-teacher",
+            "display_name": "高等数学课程教师",
+            "source_type": "TEACHER"
+          },
+          "content": "高等数学期中考试定于9月21日14:00至16:00在D201举行，请携带学生证，可使用无存储功能计算器。",
+          "sent_at": "2026-09-02T11:04:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-course-05",
+          "sender": {
+            "external_id": "ai-demo-network-lab-teacher",
+            "display_name": "网络实验教师",
+            "source_type": "TEACHER"
+          },
+          "content": "本周四的计算机网络实验调至9月12日周六9:00，实验室仍为信工楼406，不能参加者需在9月5日前登记。",
+          "sent_at": "2026-09-02T11:12:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-course-06",
+          "sender": {
+            "external_id": "ai-demo-listening-teacher",
+            "display_name": "英语听力教师",
+            "source_type": "TEACHER"
+          },
+          "content": "英语听力摸底测试安排在9月17日8:00，地点语音室2，请自带有线耳机并提前10分钟签到。",
+          "sent_at": "2026-09-02T11:20:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-course-07",
+          "sender": {
+            "external_id": "ai-demo-se-class-leader",
+            "display_name": "软件工程课代表",
+            "source_type": "CLASS_LEADER"
+          },
+          "content": "软件工程小组演示顺序将在9月11日16:00于实验楼201现场抽签，每组至少派一名成员参加。",
+          "sent_at": "2026-09-02T11:28:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-course-08",
+          "sender": {
+            "external_id": "ai-demo-probability-ta",
+            "display_name": "概率论助教",
+            "source_type": "TEACHER"
+          },
+          "content": "本周概率论答疑安排在9月6日15:00，地点图书馆研讨室2，主要讲解条件概率和贝叶斯公式。",
+          "sent_at": "2026-09-02T11:36:00+08:00",
+          "attachments": []
+        }
+      ]
+    },
+    {
+      "purpose": "校园活动与报名",
+      "expected_count": 8,
+      "platform": {
+        "name": "QQ",
+        "type": "IM"
+      },
+      "channel": {
+        "external_id": "ai-demo-20260902-campus-events",
+        "name": "2026校园活动发布群（AI演示）",
+        "channel_type": "GROUP"
+      },
+      "messages": [
+        {
+          "external_id": "ai-demo-20260902-activity-01",
+          "sender": {
+            "external_id": "ai-demo-innovation-center",
+            "display_name": "创新实践中心",
+            "source_type": "ADMIN"
+          },
+          "content": "校园低碳主题编程马拉松开始报名，报名截止9月20日18:00，比赛时间为9月26日至27日，可2至4人组队。",
+          "sent_at": "2026-09-02T13:10:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-activity-02",
+          "sender": {
+            "external_id": "ai-demo-volunteer-association",
+            "display_name": "青年志愿者协会",
+            "source_type": "ADMIN"
+          },
+          "content": "河岸清洁志愿活动9月12日7:30在北门集合，报名截止9月8日20:00，活动计4个志愿服务小时。",
+          "sent_at": "2026-09-02T13:18:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-activity-03",
+          "sender": {
+            "external_id": "ai-demo-photo-club",
+            "display_name": "摄影协会",
+            "source_type": "ADMIN"
+          },
+          "content": "“校园里的光”摄影展征稿截止9月25日，作品需为本学期原创，每人最多提交3张JPG照片。",
+          "sent_at": "2026-09-02T13:26:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-activity-04",
+          "sender": {
+            "external_id": "ai-demo-choir",
+            "display_name": "大学生合唱团",
+            "source_type": "ADMIN"
+          },
+          "content": "校合唱团秋季招新试唱安排在9月10日18:30，地点艺术楼102，报名者准备一段两分钟以内的清唱。",
+          "sent_at": "2026-09-02T13:34:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-activity-05",
+          "sender": {
+            "external_id": "ai-demo-basketball-union",
+            "display_name": "校篮球协会",
+            "source_type": "ADMIN"
+          },
+          "content": "新生杯篮球赛队伍登记截止9月14日12:00，每队8至12人，领队须上传全队学生证照片。",
+          "sent_at": "2026-09-02T13:42:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-activity-06",
+          "sender": {
+            "external_id": "ai-demo-counseling-center",
+            "display_name": "心理健康中心",
+            "source_type": "ADMIN"
+          },
+          "content": "时间管理工作坊将于9月9日19:00在学生活动中心204举行，限额40人，需提前在第二课堂平台报名。",
+          "sent_at": "2026-09-02T13:50:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-activity-07",
+          "sender": {
+            "external_id": "ai-demo-maker-space",
+            "display_name": "创客空间",
+            "source_type": "ADMIN"
+          },
+          "content": "3D打印设备入门培训定于9月16日15:30，地点工程训练中心115，通过培训后方可预约设备。",
+          "sent_at": "2026-09-02T13:58:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-activity-08",
+          "sender": {
+            "external_id": "ai-demo-debate-club",
+            "display_name": "辩论队",
+            "source_type": "ADMIN"
+          },
+          "content": "校际辩论友谊赛观众预约开放，比赛时间9月13日19:00，地点大学生活动中心报告厅，预约截止当天12:00。",
+          "sent_at": "2026-09-02T14:06:00+08:00",
+          "attachments": []
+        }
+      ]
+    },
+    {
+      "purpose": "行政与校园生活",
+      "expected_count": 8,
+      "platform": {
+        "name": "DingTalk",
+        "type": "IM"
+      },
+      "channel": {
+        "external_id": "ai-demo-20260902-admin-life",
+        "name": "2026学生事务与校园生活群（AI演示）",
+        "channel_type": "GROUP"
+      },
+      "messages": [
+        {
+          "external_id": "ai-demo-20260902-admin-01",
+          "sender": {
+            "external_id": "ai-demo-scholarship-office",
+            "display_name": "奖助学金办公室",
+            "source_type": "ADMIN"
+          },
+          "content": "国家奖学金初审材料请在9月22日17:00前交至学院办公室312，纸质版与系统电子版必须一致。",
+          "sent_at": "2026-09-02T14:30:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-admin-02",
+          "sender": {
+            "external_id": "ai-demo-dorm-office",
+            "display_name": "宿舍管理办公室",
+            "source_type": "ADMIN"
+          },
+          "content": "9月7日14:00至17:00开展宿舍卫生与用电安全检查，请清理消防通道并移除违规大功率电器。",
+          "sent_at": "2026-09-02T14:38:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-admin-03",
+          "sender": {
+            "external_id": "ai-demo-insurance-office",
+            "display_name": "学生医保办公室",
+            "source_type": "ADMIN"
+          },
+          "content": "2027年度大学生医保参保信息确认截止9月18日18:00，不参保或信息有误的同学需在系统中提交说明。",
+          "sent_at": "2026-09-02T14:46:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-admin-04",
+          "sender": {
+            "external_id": "ai-demo-textbook-center",
+            "display_name": "教材服务中心",
+            "source_type": "ADMIN"
+          },
+          "content": "本学期多订教材退费登记截止9月11日16:30，请携带未拆封教材、缴费记录和学生证到教材中心办理。",
+          "sent_at": "2026-09-02T14:54:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-admin-05",
+          "sender": {
+            "external_id": "ai-demo-internship-office",
+            "display_name": "实践教学办公室",
+            "source_type": "ADMIN"
+          },
+          "content": "暑期实习证明和单位评价表归档截止9月30日17:00，扫描件上传系统，原件由班级统一收取。",
+          "sent_at": "2026-09-02T15:02:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-admin-06",
+          "sender": {
+            "external_id": "ai-demo-canteen-office",
+            "display_name": "餐饮服务中心",
+            "source_type": "ADMIN"
+          },
+          "content": "秋季食堂满意度调查开放至9月10日20:00，完成问卷可参与餐券抽奖，问卷入口在校园服务号。",
+          "sent_at": "2026-09-02T15:10:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-admin-07",
+          "sender": {
+            "external_id": "ai-demo-clinic",
+            "display_name": "校医院",
+            "source_type": "ADMIN"
+          },
+          "content": "流感疫苗首批预约将于9月15日9:00开放，接种时间为9月18日至20日，需在校医院小程序实名预约。",
+          "sent_at": "2026-09-02T15:18:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-admin-08",
+          "sender": {
+            "external_id": "ai-demo-energy-office",
+            "display_name": "学生社区能源中心",
+            "source_type": "ADMIN"
+          },
+          "content": "家庭经济困难学生宿舍电费补助申请截止9月12日17:00，需上传认定证明并填写宿舍房间号。",
+          "sent_at": "2026-09-02T15:26:00+08:00",
+          "attachments": []
+        }
+      ]
+    },
+    {
+      "purpose": "同学间小道消息",
+      "expected_count": 8,
+      "platform": {
+        "name": "QQ",
+        "type": "IM"
+      },
+      "channel": {
+        "external_id": "ai-demo-20260902-campus-rumors",
+        "name": "2026同学互助小道消息群（AI演示）",
+        "channel_type": "GROUP"
+      },
+      "messages": [
+        {
+          "external_id": "ai-demo-20260902-rumor-01",
+          "sender": {
+            "external_id": "ai-demo-student-lin",
+            "display_name": "林同学",
+            "source_type": "STUDENT"
+          },
+          "content": "听就业办值班的同学说，9月24日下午体育馆那场招聘会可能会新增一家机器人公司，正式展位表还没发，想投算法岗的可以留意后续通知。",
+          "sent_at": "2026-09-02T16:10:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-rumor-02",
+          "sender": {
+            "external_id": "ai-demo-student-zhou",
+            "display_name": "周学长",
+            "source_type": "STUDENT"
+          },
+          "content": "张老师课题组的学长说，9月19日晚可能会临时开一场数据库期末复习分享，地点大概率在信工楼，老师还没正式确认。",
+          "sent_at": "2026-09-02T16:18:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-rumor-03",
+          "sender": {
+            "external_id": "ai-demo-student-wu",
+            "display_name": "吴同学",
+            "source_type": "STUDENT"
+          },
+          "content": "室友在二食堂兼职，他说新的清真窗口预计9月8日开始试营业，位置在二楼西侧，不过还没看到后勤的正式公告。",
+          "sent_at": "2026-09-02T16:26:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-rumor-04",
+          "sender": {
+            "external_id": "ai-demo-student-he",
+            "display_name": "何同学",
+            "source_type": "STUDENT"
+          },
+          "content": "群里有人说中秋前一天9月30日17:30可能加开一班去高铁站的校车，车票预约方式还不清楚，最好等调度室通知。",
+          "sent_at": "2026-09-02T16:34:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-rumor-05",
+          "sender": {
+            "external_id": "ai-demo-student-tang",
+            "display_name": "唐同学",
+            "source_type": "STUDENT"
+          },
+          "content": "学生会朋友说这学期第一批创新学分认定可能提前到9月14日截止，材料还没收的话建议先整理获奖证书。",
+          "sent_at": "2026-09-02T16:42:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-rumor-06",
+          "sender": {
+            "external_id": "ai-demo-student-qin",
+            "display_name": "秦同学",
+            "source_type": "STUDENT"
+          },
+          "content": "竞赛队师兄说算法校队可能9月6日20:00在机房临时招几名替补，只面向有校赛经历的同学，官方招募表还没发布。",
+          "sent_at": "2026-09-02T16:50:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-rumor-07",
+          "sender": {
+            "external_id": "ai-demo-student-luo",
+            "display_name": "罗同学",
+            "source_type": "STUDENT"
+          },
+          "content": "图书馆勤工助学的同学说地下自习室可能从9月20日起试行24小时开放，目前还在做门禁测试。",
+          "sent_at": "2026-09-02T16:58:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-rumor-08",
+          "sender": {
+            "external_id": "ai-demo-student-shen",
+            "display_name": "沈同学",
+            "source_type": "STUDENT"
+          },
+          "content": "院学生会的朋友提到9月15日至17日可能在西门设旧衣捐赠点，具体接收时间和物品要求要等公众号推文。",
+          "sent_at": "2026-09-02T17:06:00+08:00",
+          "attachments": []
+        }
+      ]
+    },
+    {
+      "purpose": "无用闲聊",
+      "expected_count": 8,
+      "platform": {
+        "name": "WeChat",
+        "type": "IM"
+      },
+      "channel": {
+        "external_id": "ai-demo-20260902-casual-chat",
+        "name": "2026宿舍闲聊群（AI演示）",
+        "channel_type": "GROUP"
+      },
+      "messages": [
+        {
+          "external_id": "ai-demo-20260902-chat-01",
+          "sender": {
+            "external_id": "ai-demo-roommate-a",
+            "display_name": "室友甲",
+            "source_type": "STUDENT"
+          },
+          "content": "哈哈哈哈终于下课了",
+          "sent_at": "2026-09-02T19:10:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-chat-02",
+          "sender": {
+            "external_id": "ai-demo-roommate-b",
+            "display_name": "室友乙",
+            "source_type": "STUDENT"
+          },
+          "content": "有人现在去吃火锅吗",
+          "sent_at": "2026-09-02T19:18:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-chat-03",
+          "sender": {
+            "external_id": "ai-demo-roommate-c",
+            "display_name": "室友丙",
+            "source_type": "STUDENT"
+          },
+          "content": "[表情] 猫猫点头",
+          "sent_at": "2026-09-02T19:26:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-chat-04",
+          "sender": {
+            "external_id": "ai-demo-roommate-d",
+            "display_name": "室友丁",
+            "source_type": "STUDENT"
+          },
+          "content": "收到收到",
+          "sent_at": "2026-09-02T19:34:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-chat-05",
+          "sender": {
+            "external_id": "ai-demo-roommate-e",
+            "display_name": "室友戊",
+            "source_type": "STUDENT"
+          },
+          "content": "这个梗真的笑死我了",
+          "sent_at": "2026-09-02T19:42:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-chat-06",
+          "sender": {
+            "external_id": "ai-demo-roommate-f",
+            "display_name": "室友己",
+            "source_type": "STUDENT"
+          },
+          "content": "谁有充电宝借我一下",
+          "sent_at": "2026-09-02T19:50:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-chat-07",
+          "sender": {
+            "external_id": "ai-demo-roommate-g",
+            "display_name": "室友庚",
+            "source_type": "STUDENT"
+          },
+          "content": "今晚有人开黑不",
+          "sent_at": "2026-09-02T19:58:00+08:00",
+          "attachments": []
+        },
+        {
+          "external_id": "ai-demo-20260902-chat-08",
+          "sender": {
+            "external_id": "ai-demo-roommate-h",
+            "display_name": "室友辛",
+            "source_type": "STUDENT"
+          },
+          "content": "我刚从操场回来，风也太大了",
+          "sent_at": "2026-09-02T20:06:00+08:00",
+          "attachments": []
+        }
+      ]
+    }
+  ]
+}

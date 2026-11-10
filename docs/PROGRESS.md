@@ -101,3 +101,17 @@
 - Phase 6 本机与 clean clone 的文档、schema/SQL、依赖安装、空库迁移、seed、pytest、ruff、alembic check、frontend build/test 和实际启动均已完成。
 - NapCat 真实框架联调仍依赖用户搭建第三方框架；最终业务演示清单需由用户按 `docs/DEMO_SCRIPT.md` 完成或录屏。
 - FastAPI 当前依赖组合会输出上游 TestClient 弃用 warning，但测试结果有效；后续依赖升级时复核。
+
+## 2026-09-02 课堂手工 AI 分析数据追加
+
+- 新增 `sample_data/pending_ai_messages_60.json`：固定 60 条合成校园原始消息，包含 52 条独立有效信息和 8 条无用闲聊。
+- 新增 `scripts/import_pending_ai_demo.py`：通过正式 ingestion service 追加导入、固定 external ID 幂等、严格验证 60 条均为 PENDING，不执行 reset。
+- 已实际写入开发库 `unibrief` 的 `demo_student` 私有空间：60 inserted、0 duplicate、0 failed，Message ID 为 1014–1073。
+- 数据覆盖普通通知、作业提交窗口、课程/考试、活动、行政生活和同学小道消息；未预生成 AIAnalysis、InformationItem 或 MessageInformation，等待真实 AI 批量分析。
+- 验证：数据文件 check-only 通过；新增脚本 Ruff 通过；后端 pytest 44 passed（仅现有 Starlette/httpx 弃用警告）。
+
+## 2026-09-01 Dashboard 事项统计修复
+
+- 修复 Dashboard 将最近 29 天历史时间窗错误传给 overview 的问题；未来事项不再被 `end=当前时间` 排除。
+- Dashboard 总览卡片改为读取当前用户全局状态总数；渠道、分类图表继续保持最近 29 天统计口径。
+- 使用 `sedatemickey` 开发数据复现：修复前未来事项为 0，全局正确值为 50；当前没有 DUE 状态提醒，因此到期提醒正确值仍为 0。`npm test -- --run` 2 tests passed，`npm run build` 通过（仅保留已有 chunk size warning）。
